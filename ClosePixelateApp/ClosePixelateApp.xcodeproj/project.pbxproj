@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A161F4381E47BFDC0027CB46 /* ClosePixelate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A161F4371E47BFDC0027CB46 /* ClosePixelate.framework */; };
+		A161F43B1E47BFE10027CB46 /* ClosePixelate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A161F4391E47BFE10027CB46 /* ClosePixelate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A1C1611E1E47BCB200B87F48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C1611D1E47BCB200B87F48 /* AppDelegate.swift */; };
 		A1C161201E47BCB200B87F48 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C1611F1E47BCB200B87F48 /* ViewController.swift */; };
 		A1C161231E47BCB200B87F48 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1C161211E47BCB200B87F48 /* Main.storyboard */; };
@@ -14,7 +16,23 @@
 		A1C161281E47BCB200B87F48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1C161261E47BCB200B87F48 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A161F43C1E47BFE10027CB46 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A161F43B1E47BFE10027CB46 /* ClosePixelate.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A161F4371E47BFDC0027CB46 /* ClosePixelate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ClosePixelate.framework; path = "../ClosePixelate/build/Debug-iphoneos/ClosePixelate.framework"; sourceTree = "<group>"; };
+		A161F4391E47BFE10027CB46 /* ClosePixelate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ClosePixelate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C1611A1E47BCB200B87F48 /* ClosePixelateApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClosePixelateApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C1611D1E47BCB200B87F48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1C1611F1E47BCB200B87F48 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A161F4381E47BFDC0027CB46 /* ClosePixelate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A161F4361E47BFDB0027CB46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A161F4371E47BFDC0027CB46 /* ClosePixelate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A1C161111E47BCB200B87F48 = {
 			isa = PBXGroup;
 			children = (
+				A161F4391E47BFE10027CB46 /* ClosePixelate.framework */,
 				A1C1611C1E47BCB200B87F48 /* ClosePixelateApp */,
 				A1C1611B1E47BCB200B87F48 /* Products */,
+				A161F4361E47BFDB0027CB46 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +103,7 @@
 				A1C161161E47BCB200B87F48 /* Sources */,
 				A1C161171E47BCB200B87F48 /* Frameworks */,
 				A1C161181E47BCB200B87F48 /* Resources */,
+				A161F43C1E47BFE10027CB46 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -302,6 +332,7 @@
 				A1C1612E1E47BCB200B87F48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

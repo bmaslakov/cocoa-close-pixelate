@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A161F4351E47BE9D0027CB46 /* PixelateLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161F4341E47BE9D0027CB46 /* PixelateLayer.swift */; };
 		A1C1610B1E47BC6C00B87F48 /* ClosePixelate.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C161091E47BC6B00B87F48 /* ClosePixelate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A161F4341E47BE9D0027CB46 /* PixelateLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixelateLayer.swift; sourceTree = "<group>"; };
 		A1C161061E47BC6B00B87F48 /* ClosePixelate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ClosePixelate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C161091E47BC6B00B87F48 /* ClosePixelate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosePixelate.h; sourceTree = "<group>"; };
 		A1C1610A1E47BC6B00B87F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 		A1C161081E47BC6B00B87F48 /* ClosePixelate */ = {
 			isa = PBXGroup;
 			children = (
+				A161F4341E47BE9D0027CB46 /* PixelateLayer.swift */,
 				A1C161091E47BC6B00B87F48 /* ClosePixelate.h */,
 				A1C1610A1E47BC6B00B87F48 /* Info.plist */,
 			);
@@ -96,6 +99,7 @@
 					A1C161051E47BC6B00B87F48 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 3754CLXDN8;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,6 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A161F4351E47BE9D0027CB46 /* PixelateLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +245,7 @@
 		A1C1610F1E47BC6C00B87F48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3754CLXDN8;
@@ -252,6 +258,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.rainbowfish.ClosePixelate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -259,6 +266,7 @@
 		A1C161101E47BC6C00B87F48 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3754CLXDN8;
@@ -294,6 +302,7 @@
 				A1C161101E47BC6C00B87F48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

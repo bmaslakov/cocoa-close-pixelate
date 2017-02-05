@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  ClosePixelateApp
-//
-//  Created by Boris on 05/02/2017.
-//  Copyright © 2017 bmaslakov. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
