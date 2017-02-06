@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A161F4351E47BE9D0027CB46 /* PixelateLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A161F4341E47BE9D0027CB46 /* PixelateLayer.swift */; };
 		A1C1610B1E47BC6C00B87F48 /* ClosePixelate.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C161091E47BC6B00B87F48 /* ClosePixelate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A1C8AEEE1E48E0CA00A6CFE4 /* Pixelate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C8AEED1E48E0CA00A6CFE4 /* Pixelate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +17,7 @@
 		A1C161061E47BC6B00B87F48 /* ClosePixelate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ClosePixelate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1C161091E47BC6B00B87F48 /* ClosePixelate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClosePixelate.h; sourceTree = "<group>"; };
 		A1C1610A1E47BC6B00B87F48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1C8AEED1E48E0CA00A6CFE4 /* Pixelate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pixelate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 		A1C161081E47BC6B00B87F48 /* ClosePixelate */ = {
 			isa = PBXGroup;
 			children = (
+				A1C8AEED1E48E0CA00A6CFE4 /* Pixelate.swift */,
 				A161F4341E47BE9D0027CB46 /* PixelateLayer.swift */,
 				A1C161091E47BC6B00B87F48 /* ClosePixelate.h */,
 				A1C1610A1E47BC6B00B87F48 /* Info.plist */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C8AEEE1E48E0CA00A6CFE4 /* Pixelate.swift in Sources */,
 				A161F4351E47BE9D0027CB46 /* PixelateLayer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
