@@ -14,24 +14,52 @@
 
 import Foundation
 
-class Pixelate {
+public class Pixelate {
     private static let SQRT2 = CGFloat(sqrt(2))
     
+    public static func render(pixels: CGImage, outBounds: CGRect, layers: PixelateLayer...) -> CGImage {
+        return render(pixels: pixels, inBounds: nil, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
+    }
     
+    public static func render(pixels: CGImage, inBounds: CGRect?, outBounds: CGRect, layers: PixelateLayer...) -> CGImage {
+        return render(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
+    }
     
-    public static func render(pixels: CGImage, inBounds: CGRect?, out: CGImage, outBounds: CGRect?, layers: PixelateLayer...) {
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let context = CGBitmapContextCreate(NULL, width * imageScale, height * imageScale, 8, 0, colorSpace, kCGImageAlphaPremultipliedLast);
-
+    public static func render(pixels: CGImage, inBounds: CGRect?, outBounds: CGRect, layers: [PixelateLayer]) -> CGImage {
+        return render(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
+    }
+    
+    public static func render(pixels: CGImage, inBounds: CGRect?, width: Int, height: Int, outBounds: CGRect, layers: PixelateLayer...) -> CGImage {
+        return render(pixels: pixels, inBounds: inBounds, width: width, height: height, outBounds: outBounds, layers: layers)
+    }
+    
+    public static func render(pixels: CGImage, inBounds: CGRect?, width: Int, height: Int, outBounds: CGRect, layers: [PixelateLayer]) -> CGImage {
+        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        let canvas = CGContext(data: nil,
+                               width: width,
+                               height: height,
+                               bitsPerComponent: 8,
+                               bytesPerRow: 0,
+                               space: rgbColorSpace,
+                               bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)
+        
+        render(pixels: pixels, inBounds: inBounds, canvas: canvas!, outBounds: outBounds, layers: layers)
+        
+        return canvas!.makeImage()!
     }
     
     public static func render(pixels: CGImage, inBounds: CGRect?, canvas: CGContext, outBounds: CGRect, layers: PixelateLayer...) {
+        render(pixels: pixels, inBounds: inBounds, canvas: canvas, outBounds: outBounds, layers: layers)
+    }
+    
+    public static func render(pixels: CGImage, inBounds: CGRect?, canvas: CGContext, outBounds: CGRect, layers: [PixelateLayer]) {
         let inWidth = inBounds?.width ?? CGFloat(pixels.width)
         let inHeight = inBounds?.height ?? CGFloat(pixels.height)
         let inX = inBounds?.minX ?? 0
         let inY = inBounds?.minY ?? 0
         let scaleX = outBounds.width / inWidth
-        let scaleY = outBounds.width / inHeight
+        let scaleY = outBounds.height / inHeight
         
         canvas.saveGState()
         canvas.clip(to: outBounds)
@@ -65,27 +93,30 @@ class Pixelate {
                     let pixelX = inX + max(min(x, inWidth - 1), 0)
                     
                     // set pixel color
-                    let index = pixels.width * Int(pixelY) + Int(pixelX)
+                    let index = pixels.width * Int(inHeight - pixelY - 1) + Int(pixelX)
+                    let color: UIColor
                     switch numBytes {
                     case expectedLengthA:
-                        UIColor(red: 0,
-                                green: 0,
-                                blue: 0,
-                                alpha: CGFloat(data[index]) / 255.0 * layer.alpha).set()
+                        color = UIColor(red: 0,
+                                        green: 0,
+                                        blue: 0,
+                                        alpha: CGFloat(data[index]) / 255.0 * layer.alpha)
                     case expectedLengthRGB:
-                        UIColor(red: CGFloat(data[3 * index]) / 255.0,
-                                green: CGFloat(data[3 * index + 1]) / 255.0,
-                                blue: CGFloat(data[3 * index + 2]) / 255.0,
-                                alpha: layer.alpha).set()
+                        color = UIColor(red: CGFloat(data[3 * index]) / 255.0,
+                                        green: CGFloat(data[3 * index + 1]) / 255.0,
+                                        blue: CGFloat(data[3 * index + 2]) / 255.0,
+                                        alpha: layer.alpha)
                     case expectedLengthRGBA:
-                        UIColor(red: CGFloat(data[4 * index]) / 255.0,
-                                green: CGFloat(data[4 * index + 1]) / 255.0,
-                                blue: CGFloat(data[4 * index + 2]) / 255.0,
-                                alpha: CGFloat(data[4 * index + 3]) / 255.0 * layer.alpha).set()
+                        color = UIColor(red: CGFloat(data[4 * index]) / 255.0,
+                                        green: CGFloat(data[4 * index + 1]) / 255.0,
+                                        blue: CGFloat(data[4 * index + 2]) / 255.0,
+                                        alpha: CGFloat(data[4 * index + 3]) / 255.0 * layer.alpha)
                     default:
                         // unsupported format
-                        UIColor.clear.set()
+                        color = UIColor.clear
                     }
+                    
+                    canvas.setFillColor(color.cgColor)
                 
                     switch (layer.shape) {
                     case .circle:
