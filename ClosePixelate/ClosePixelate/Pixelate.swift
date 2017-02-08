@@ -17,23 +17,15 @@ import Foundation
 public class Pixelate {
     private static let SQRT2 = CGFloat(sqrt(2))
     
-    public static func render(pixels: CGImage, outBounds: CGRect, layers: PixelateLayer...) -> CGImage {
-        return render(pixels: pixels, inBounds: nil, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
-    }
-    
-    public static func render(pixels: CGImage, inBounds: CGRect?, outBounds: CGRect, layers: PixelateLayer...) -> CGImage {
+    public static func render(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: PixelateLayer...) -> CGImage {
         return render(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
     }
     
-    public static func render(pixels: CGImage, inBounds: CGRect?, outBounds: CGRect, layers: [PixelateLayer]) -> CGImage {
+    public static func render(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage {
         return render(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
     }
     
-    public static func render(pixels: CGImage, inBounds: CGRect?, width: Int, height: Int, outBounds: CGRect, layers: PixelateLayer...) -> CGImage {
-        return render(pixels: pixels, inBounds: inBounds, width: width, height: height, outBounds: outBounds, layers: layers)
-    }
-    
-    public static func render(pixels: CGImage, inBounds: CGRect?, width: Int, height: Int, outBounds: CGRect, layers: [PixelateLayer]) -> CGImage {
+    public static func render(pixels: CGImage, inBounds: CGRect? = nil, width: Int = 0, height: Int, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage {
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         
         let canvas = CGContext(data: nil,
@@ -43,6 +35,8 @@ public class Pixelate {
                                bytesPerRow: 0,
                                space: rgbColorSpace,
                                bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)
+        
+        let outBounds = outBounds ?? CGRect(x: 0, y: 0, width: 800, height: 1084)
         
         render(pixels: pixels, inBounds: inBounds, canvas: canvas!, outBounds: outBounds, layers: layers)
         
