@@ -6,7 +6,7 @@ public class RootTableViewController: UITableViewController {
     private let cellId = "Cell"
     private let segueId = "Segue1"
     
-    private let imageResources = [ "officer" ]
+    private let imageResources = [ "officer", "stanley" ]
     private let layers = [
         [
             PixelateLayer(.diamond) {
@@ -20,6 +20,30 @@ public class RootTableViewController: UITableViewController {
             PixelateLayer(.diamond) {
                 $0.resolution = 8
                 $0.size = 6
+            }
+        ],
+        [
+            PixelateLayer(.square) {
+                $0.resolution = 32
+            },
+            PixelateLayer(.circle) {
+                $0.resolution = 32
+                $0.offset = 15
+            },
+            PixelateLayer(.circle) {
+                $0.resolution = 32
+                $0.size = 26
+                $0.offset = 13
+            },
+            PixelateLayer(.circle) {
+                $0.resolution = 32
+                $0.size = 18
+                $0.offset = 10
+            },
+            PixelateLayer(.circle) {
+                $0.resolution = 32
+                $0.size = 12
+                $0.offset = 8
             }
         ]
     ]
