@@ -36,7 +36,7 @@ public class Pixelate {
                                space: rgbColorSpace,
                                bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)
         
-        let outBounds = outBounds ?? CGRect(x: 0, y: 0, width: 800, height: 1084)
+        let outBounds = outBounds ?? CGRect(x: 0, y: 0, width: width, height: height)
         
         render(pixels: pixels, inBounds: inBounds, canvas: canvas!, outBounds: outBounds, layers: layers)
         
