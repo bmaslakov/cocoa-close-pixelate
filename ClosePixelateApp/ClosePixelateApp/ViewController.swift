@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         let con = Pixelate.render(pixels: image.cgImage!,
                                   layers: config.1)
         
-        imageView.image = UIImage(cgImage: con)
+        imageView.image = UIImage(cgImage: con!)
     }
 }
 

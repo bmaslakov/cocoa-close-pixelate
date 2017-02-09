@@ -17,15 +17,15 @@ import Foundation
 public class Pixelate {
     private static let SQRT2 = CGFloat(sqrt(2))
     
-    public static func render(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: PixelateLayer...) -> CGImage {
+    public static func render(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: PixelateLayer...) -> CGImage? {
         return render(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
     }
     
-    public static func render(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage {
+    public static func render(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage? {
         return render(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
     }
     
-    public static func render(pixels: CGImage, inBounds: CGRect? = nil, width: Int = 0, height: Int, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage {
+    public static func render(pixels: CGImage, inBounds: CGRect? = nil, width: Int = 0, height: Int, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage? {
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         
         let canvas = CGContext(data: nil,
@@ -40,7 +40,7 @@ public class Pixelate {
         
         render(pixels: pixels, inBounds: inBounds, canvas: canvas!, outBounds: outBounds, layers: layers)
         
-        return canvas!.makeImage()!
+        return canvas?.makeImage()
     }
     
     public static func render(pixels: CGImage, inBounds: CGRect?, canvas: CGContext, outBounds: CGRect, layers: PixelateLayer...) {
@@ -129,7 +129,6 @@ public class Pixelate {
                                               height: 2 * halfDiamondSize))
                         canvas.restoreGState()
                     case .square:
-                        
                         canvas.addRect(CGRect(x: x - halfSize,
                                               y: y - halfSize,
                                               width: 2 * halfSize,
