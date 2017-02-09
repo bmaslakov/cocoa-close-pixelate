@@ -4,8 +4,7 @@ import ClosePixelate
 class ViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
-    var imageId: String!
-    var layers: [PixelateLayer]!
+    var config: (String, [PixelateLayer])!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -17,11 +16,11 @@ class ViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        self.title = imageId
+        self.title = config.0
         
-        let image: UIImage! = UIImage(named: imageId + ".jpg")
+        let image: UIImage! = UIImage(named: config.0 + ".jpg")
         let con = Pixelate.render(pixels: image.cgImage!,
-                                  layers: layers)
+                                  layers: config.1)
         
         imageView.image = UIImage(cgImage: con)
     }
