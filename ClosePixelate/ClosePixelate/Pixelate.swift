@@ -60,8 +60,10 @@ public class Pixelate {
         
         canvas.saveGState()
         canvas.clip(to: outBounds)
+        canvas.translateBy(x: 0, y: outBounds.height) // to flip the image vertically
         canvas.translateBy(x: outBounds.minX, y: outBounds.minY)
         canvas.scaleBy(x: scaleX, y: scaleY)
+        canvas.scaleBy(x: 1, y: -1) // to flip the image vertically
         
         let pixelData = pixels.dataProvider!.data
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
@@ -90,7 +92,7 @@ public class Pixelate {
                     let pixelX = inX + max(min(x, inWidth - 1), 0)
                     
                     // set pixel color
-                    let index = pixels.width * Int(inHeight - pixelY - 1) + Int(pixelX)
+                    let index = pixels.width * Int(pixelY) + Int(pixelX)
                     let color: UIColor
                     switch numBytes {
                     case expectedLengthA:
