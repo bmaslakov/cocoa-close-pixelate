@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         self.title = config.0
         
         let image: UIImage! = UIImage(named: config.0 + ".jpg")
-        let con = Pixelate.render(pixels: image.cgImage!,
+        let con = Pixelate.create(pixels: image.cgImage!,
                                   layers: config.1)
         
         imageView.image = UIImage(cgImage: con!)

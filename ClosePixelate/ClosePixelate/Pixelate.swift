@@ -17,15 +17,19 @@ import Foundation
 public class Pixelate {
     private static let SQRT2 = CGFloat(sqrt(2))
     
-    public static func render(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: PixelateLayer...) -> CGImage? {
-        return render(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
+    public static func create(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: PixelateLayer...) -> CGImage? {
+        return create(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
     }
     
-    public static func render(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage? {
-        return render(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
+    public static func create(pixels: CGImage, inBounds: CGRect? = nil, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage? {
+        return create(pixels: pixels, inBounds: inBounds, width: pixels.width, height: pixels.height, outBounds: outBounds, layers: layers)
     }
     
-    public static func render(pixels: CGImage, inBounds: CGRect? = nil, width: Int = 0, height: Int, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage? {
+    public static func create(pixels: CGImage, inBounds: CGRect? = nil, width: Int, height: Int, outBounds: CGRect? = nil, layers: PixelateLayer...) -> CGImage? {
+        return create(pixels: pixels, inBounds: inBounds, width: width, height: height, outBounds: outBounds, layers: layers)
+    }
+    
+    public static func create(pixels: CGImage, inBounds: CGRect? = nil, width: Int, height: Int, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage? {
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         
         let outBounds = outBounds ?? CGRect(x: 0, y: 0, width: width, height: height)
