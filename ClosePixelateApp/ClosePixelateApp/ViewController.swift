@@ -2,17 +2,20 @@ import UIKit
 import ClosePixelate
 
 class ViewController: UIViewController {
-    @IBOutlet weak var imageView: UIImageView!
-    
     var config: (String, [PixelateLayer])!
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    let imageView = UIImageView()
+
     override func viewDidLoad() {
+        let statbarHeight = UIApplication.shared.statusBarFrame.size.height
+        let navbarHeight = self.navigationController!.navigationBar.frame.size.height
+        let offset = statbarHeight + navbarHeight
+        imageView.frame = CGRect(x: 0,
+                                 y: offset,
+                                 width: self.view.frame.width,
+                                 height: self.view.frame.height - offset)
         imageView.contentMode = .scaleAspectFit
+        self.view.addSubview(imageView)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -25,4 +28,3 @@ class ViewController: UIViewController {
         imageView.image = UIImage(cgImage: con!)
     }
 }
-
