@@ -28,19 +28,22 @@ public class Pixelate {
     public static func render(pixels: CGImage, inBounds: CGRect? = nil, width: Int = 0, height: Int, outBounds: CGRect? = nil, layers: [PixelateLayer]) -> CGImage? {
         let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
         
-        let canvas = CGContext(data: nil,
-                               width: width,
-                               height: height,
-                               bitsPerComponent: 8,
-                               bytesPerRow: 0,
-                               space: rgbColorSpace,
-                               bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue)
-        
         let outBounds = outBounds ?? CGRect(x: 0, y: 0, width: width, height: height)
         
-        render(pixels: pixels, inBounds: inBounds, canvas: canvas!, outBounds: outBounds, layers: layers)
-        
-        return canvas?.makeImage()
+        if let canvas = CGContext(data: nil,
+                                  width: width,
+                                  height: height,
+                                  bitsPerComponent: 8,
+                                  bytesPerRow: 0,
+                                  space: rgbColorSpace,
+                                  bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue) {
+            
+            render(pixels: pixels, inBounds: inBounds, canvas: canvas, outBounds: outBounds, layers: layers)
+            
+            return canvas.makeImage()
+        } else {
+            return nil
+        }
     }
     
     public static func render(pixels: CGImage, inBounds: CGRect?, canvas: CGContext, outBounds: CGRect, layers: PixelateLayer...) {
