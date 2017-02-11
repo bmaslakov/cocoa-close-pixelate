@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.platform     = :ios, "9.0"
   s.source       = { :git => "https://github.com/bmaslakov/cocoa-close-pixelate", :tag => s.version }
-  s.source_files  = "ClosePixelate/*.swift"
+  s.source_files  = "ClosePixelate/ClosePixelate/*.swift"
   s.pod_target_xcconfig =  { 'SWIFT_VERSION' => '3.0' }
 end
