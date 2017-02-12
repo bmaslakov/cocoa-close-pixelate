@@ -42,6 +42,8 @@ public class Pixelate {
                                   space: rgbColorSpace,
                                   bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue) {
             
+            canvas.translateBy(x: 0, y: outBounds.height) // to flip the image vertically
+            canvas.scaleBy(x: 1, y: -1) // to flip the image vertically
             render(pixels: pixels, inBounds: inBounds, canvas: canvas, outBounds: outBounds, layers: layers)
             
             return canvas.makeImage()
