@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ClosePixelate"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "Multiple Selection Image Picker for iOS written in Swift"
   s.homepage     = "https://github.com/bmaslakov/cocoa-close-pixelate"
   s.license      = { :type => "MIT", :file => "LICENSE" }
