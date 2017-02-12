@@ -66,10 +66,8 @@ public class Pixelate {
         
         canvas.saveGState()
         canvas.clip(to: outBounds)
-        canvas.translateBy(x: 0, y: outBounds.height) // to flip the image vertically
         canvas.translateBy(x: outBounds.minX, y: outBounds.minY)
         canvas.scaleBy(x: scaleX, y: scaleY)
-        canvas.scaleBy(x: 1, y: -1) // to flip the image vertically
         
         let pixelData = pixels.dataProvider!.data
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
