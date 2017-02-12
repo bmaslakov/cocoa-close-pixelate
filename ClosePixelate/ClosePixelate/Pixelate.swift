@@ -52,11 +52,11 @@ public class Pixelate {
         }
     }
     
-    public static func render(pixels: CGImage, inBounds: CGRect?, canvas: CGContext, outBounds: CGRect, layers: PixelateLayer...) {
+    public static func render(pixels: CGImage, inBounds: CGRect? = nil, canvas: CGContext, outBounds: CGRect, layers: PixelateLayer...) {
         render(pixels: pixels, inBounds: inBounds, canvas: canvas, outBounds: outBounds, layers: layers)
     }
     
-    public static func render(pixels: CGImage, inBounds: CGRect?, canvas: CGContext, outBounds: CGRect, layers: [PixelateLayer]) {
+    public static func render(pixels: CGImage, inBounds: CGRect? = nil, canvas: CGContext, outBounds: CGRect, layers: [PixelateLayer]) {
         let inWidth = inBounds?.width ?? CGFloat(pixels.width)
         let inHeight = inBounds?.height ?? CGFloat(pixels.height)
         let inX = inBounds?.minX ?? 0
