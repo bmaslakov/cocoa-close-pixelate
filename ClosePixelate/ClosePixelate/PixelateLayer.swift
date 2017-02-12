@@ -15,17 +15,18 @@
 import Foundation
 
 public class PixelateLayer {
-    public var resolution: CGFloat = 16
-    public var size: CGFloat?
-    public var alpha: CGFloat = 1
-    public var offset: CGFloat = 0
     public let shape: Shape
+    public var resolution: CGFloat
+    public var size: CGFloat?
+    public var alpha: CGFloat
+    public var offset: CGFloat
     
-    typealias BuilderClosure = (PixelateLayer) -> Void
-    
-    public init(_ shape: Shape, build: BuilderClosure) {
+    public init(_ shape: Shape, resolution: CGFloat, size: CGFloat? = nil, offset: CGFloat = 0, alpha: CGFloat = 1) {
         self.shape = shape
-        build(self)
+        self.resolution = resolution
+        self.size = size
+        self.offset = offset
+        self.alpha = alpha
     }
     
     public enum Shape {

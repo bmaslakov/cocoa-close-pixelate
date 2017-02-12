@@ -10,180 +10,70 @@ public class RootTableViewController: UITableViewController {
         (
             "officer",
             [
-                PixelateLayer(.diamond) {
-                    $0.resolution = 48
-                    $0.size = 50
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 48
-                    $0.offset = 24
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 8
-                    $0.size = 6
-                }
+                PixelateLayer(.diamond, resolution: 48, size: 50),
+                PixelateLayer(.diamond, resolution: 48, offset: 24),
+                PixelateLayer(.diamond, resolution: 8, size: 6)
             ]
         ), (
             "stanley",
             [
-                PixelateLayer(.square) {
-                    $0.resolution = 32
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.offset = 15
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.size = 26
-                    $0.offset = 13
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.size = 18
-                    $0.offset = 10
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.size = 12
-                    $0.offset = 8
-                }
+                PixelateLayer(.square, resolution: 32),
+                PixelateLayer(.circle, resolution: 32, offset: 15),
+                PixelateLayer(.circle, resolution: 32, size: 26, offset: 13),
+                PixelateLayer(.circle, resolution: 32, size: 18, offset: 10),
+                PixelateLayer(.circle, resolution: 32, size: 12, offset: 8)
             ]
         ), (
             "take-my-portrait",
             [
-                PixelateLayer(.square) {
-                    $0.resolution = 48
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 48
-                    $0.offset = 12
-                    $0.alpha = 0.5
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 48
-                    $0.offset = 36
-                    $0.alpha = 0.5
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 16
-                    $0.size = 8
-                    $0.offset = 4
-                }
+                PixelateLayer(.square, resolution: 48),
+                PixelateLayer(.diamond, resolution: 48, offset: 12, alpha: 0.5),
+                PixelateLayer(.diamond, resolution: 48, offset: 36, alpha: 0.5),
+                PixelateLayer(.diamond, resolution: 16, size: 8, offset: 4)
             ]
         ), (
             "tony",
             [
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.size = 6
-                    $0.offset = 8
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.size = 9
-                    $0.offset = 8
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.size = 12
-                    $0.offset = 24
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.size = 9
-                    $0.offset = 0
-                }
+                PixelateLayer(.circle, resolution: 32, size: 6, offset: 8),
+                PixelateLayer(.circle, resolution: 32, size: 9, offset: 8),
+                PixelateLayer(.circle, resolution: 32, size: 12, offset: 24),
+                PixelateLayer(.circle, resolution: 32, size: 9, offset: 0)
             ]
         ), (
             "wonder",
             [
-                PixelateLayer(.diamond) {
-                    $0.resolution = 24
-                    $0.size = 25
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 24
-                    $0.offset = 12
-                },
-                PixelateLayer(.square) {
-                    $0.resolution = 24
-                    $0.alpha = 0.6
-                }
+                PixelateLayer(.diamond, resolution: 24, size: 25),
+                PixelateLayer(.diamond, resolution: 24, offset: 12),
+                PixelateLayer(.square, resolution: 24, alpha: 0.6)
             ]
         ), (
             "anita",
             [
-                PixelateLayer(.square) {
-                    $0.resolution = 32
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.offset = 16
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 32
-                    $0.offset = 0
-                    $0.alpha = 0.5
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 16
-                    $0.size = 9
-                    $0.offset = 0
-                    $0.alpha = 0.5
-                }
+                PixelateLayer(.square, resolution: 32),
+                PixelateLayer(.circle, resolution: 32, offset: 16),
+                PixelateLayer(.circle, resolution: 32, offset: 0, alpha: 0.5),
+                PixelateLayer(.circle, resolution: 16, size: 9, offset: 0, alpha: 0.5)
             ]
         ), (
             "giraffe",
             [
-                PixelateLayer(.circle) {
-                    $0.resolution = 24
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 24
-                    $0.size = 9
-                    $0.offset = 12
-                }
+                PixelateLayer(.circle, resolution: 24),
+                PixelateLayer(.circle, resolution: 24, size: 9, offset: 12)
             ]
         ), (
             "kendra",
             [
-                PixelateLayer(.square) {
-                    $0.resolution = 48
-                    $0.offset = 12
-                },
-                PixelateLayer(.circle) {
-                    $0.resolution = 48
-                    $0.offset = 0
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 16
-                    $0.size = 15
-                    $0.offset = 0
-                    $0.alpha = 0.6
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 16
-                    $0.size = 15
-                    $0.offset = 8
-                    $0.alpha = 0.6
-                }
+                PixelateLayer(.square, resolution: 48, offset: 12),
+                PixelateLayer(.circle, resolution: 48, offset: 0),
+                PixelateLayer(.diamond, resolution: 16, size: 15, offset: 0, alpha: 0.6),
+                PixelateLayer(.diamond, resolution: 16, size: 15, offset: 8, alpha: 0.6)
             ]
         ), (
             "gavin",
             [
-                PixelateLayer(.square) {
-                    $0.resolution = 48
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 12
-                    $0.size = 8
-                },
-                PixelateLayer(.diamond) {
-                    $0.resolution = 12
-                    $0.size = 8
-                    $0.offset = 6
-                }
+                PixelateLayer(.square, resolution: 48),
+                PixelateLayer(.diamond, resolution: 12, size: 8),
+                PixelateLayer(.diamond, resolution: 12, size: 8, offset: 6)
             ]
         )
     ]
