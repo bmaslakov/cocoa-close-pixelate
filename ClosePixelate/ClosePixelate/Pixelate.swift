@@ -71,10 +71,6 @@ public class Pixelate {
         
         let pixelData = pixels.dataProvider!.data
         let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-        let expectedLengthA = Int(pixels.width * pixels.height)
-        let expectedLengthRGB = 3 * expectedLengthA
-        let expectedLengthRGBA = 4 * expectedLengthA
-        let numBytes = CFDataGetLength(pixelData)
         
         for layer in layers {
             // option defaults
@@ -96,30 +92,9 @@ public class Pixelate {
                     let pixelX = inX + max(min(x, inWidth - 1), 0)
                     
                     // set pixel color
-                    let index = pixels.width * Int(pixelY) + Int(pixelX)
-                    let color: UIColor
-                    switch numBytes {
-                    case expectedLengthA:
-                        color = UIColor(red: 0,
-                                        green: 0,
-                                        blue: 0,
-                                        alpha: CGFloat(data[index]) / 255.0 * layer.alpha)
-                    case expectedLengthRGB:
-                        color = UIColor(red: CGFloat(data[3 * index]) / 255.0,
-                                        green: CGFloat(data[3 * index + 1]) / 255.0,
-                                        blue: CGFloat(data[3 * index + 2]) / 255.0,
-                                        alpha: layer.alpha)
-                    case expectedLengthRGBA:
-                        color = UIColor(red: CGFloat(data[4 * index]) / 255.0,
-                                        green: CGFloat(data[4 * index + 1]) / 255.0,
-                                        blue: CGFloat(data[4 * index + 2]) / 255.0,
-                                        alpha: CGFloat(data[4 * index + 3]) / 255.0 * layer.alpha)
-                    default:
-                        // unsupported format
-                        color = UIColor.clear
-                    }
                     
-                    canvas.setFillColor(color.cgColor)
+                    let color = UIColor.at(image: pixels, data: data, x: Int(pixelX), y: Int(pixelY))
+                    canvas.setFillColor(color.multiply(alpha: layer.alpha).cgColor)
                 
                     switch (layer.shape) {
                     case .circle:
@@ -148,5 +123,67 @@ public class Pixelate {
             } // row
         }
         canvas.restoreGState()
+    }
+}
+
+fileprivate extension UIColor {
+    public func multiply(alpha: CGFloat) -> UIColor {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return UIColor(red: r, green: g, blue: b, alpha: a * alpha)
+    }
+    
+    public static func at(image: CGImage, x: Int, y: Int) -> UIColor? {
+        if let pixelData = image.dataProvider?.data {
+            let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+            return UIColor.at(image: image, data: data, x: x, y: y)
+        } else {
+            return nil
+        }
+    }
+    
+    /// reuse array
+    public static func at(image: CGImage, data: UnsafePointer<UInt8>, x: Int, y: Int) -> UIColor {
+        let index = image.bytesPerRow * Int(y) + Int(x) * image.bitsPerPixel / 8
+        let color: UIColor
+        switch image.alphaInfo {
+        case .alphaOnly:
+            color = UIColor(red: 0,
+                            green: 0,
+                            blue: 0,
+                            alpha: CGFloat(data[index]) / 255.0)
+        case .none:
+            color = UIColor(red: CGFloat(data[index]) / 255.0,
+                            green: CGFloat(data[index + 1]) / 255.0,
+                            blue: CGFloat(data[index + 2]) / 255.0,
+                            alpha: 1.0)
+        case .noneSkipLast:
+            color = UIColor(red: CGFloat(data[index]) / 255.0,
+                            green: CGFloat(data[index + 1]) / 255.0,
+                            blue: CGFloat(data[index + 2]) / 255.0,
+                            alpha: 1.0)
+        case .noneSkipFirst:
+            color = UIColor(red: CGFloat(data[index + 1]) / 255.0,
+                            green: CGFloat(data[index + 2]) / 255.0,
+                            blue: CGFloat(data[index + 3]) / 255.0,
+                            alpha: 1.0)
+        case .first:
+            color = UIColor(red: CGFloat(data[index + 1]) / 255.0,
+                            green: CGFloat(data[index + 2]) / 255.0,
+                            blue: CGFloat(data[index + 3]) / 255.0,
+                            alpha: CGFloat(data[index]) / 255.0)
+        case .last:
+            color = UIColor(red: CGFloat(data[index]) / 255.0,
+                            green: CGFloat(data[index + 1]) / 255.0,
+                            blue: CGFloat(data[index + 2]) / 255.0,
+                            alpha: CGFloat(data[index + 3]) / 255.0)
+        default:
+            // unsupported format
+            color = UIColor.clear
+        }
+        return color
     }
 }
