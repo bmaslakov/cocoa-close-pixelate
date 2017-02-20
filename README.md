@@ -6,7 +6,7 @@ This simple library allows you to easily create and combine various pixelation e
 
 Based on a wonderful script by David DeSandro: [close-pixelate.desandro.com](http://close-pixelate.desandro.com).
 
-You may be also be interested in the [Android/Java version of the library](https://github.com/bmaslakov/android-close-pixelate/tree/master/ClosePixelate).
+You may be also be interested in the [Android/Java version of the library](https://github.com/bmaslakov/android-close-pixelate).
 
 ## Examples
 
