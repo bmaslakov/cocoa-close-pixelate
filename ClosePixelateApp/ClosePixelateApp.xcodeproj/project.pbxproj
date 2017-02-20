@@ -286,7 +286,7 @@
 				DEVELOPMENT_TEAM = 3754CLXDN8;
 				INFOPLIST_FILE = ClosePixelateApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.rainbowfish.ClosePixelateApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.uuddlrlrba.ClosePixelateApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -299,7 +299,7 @@
 				DEVELOPMENT_TEAM = 3754CLXDN8;
 				INFOPLIST_FILE = ClosePixelateApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.rainbowfish.ClosePixelateApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.uuddlrlrba.ClosePixelateApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
