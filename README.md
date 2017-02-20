@@ -2,12 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-5BA7E9.svg)](https://opensource.org/licenses/MIT) [![Bintray](https://img.shields.io/cocoapods/v/ClosePixelate.svg)]()
 
-Cocoa close pixelate allows you easily create and combine various pixelation effects.
-The library is super lightweight (2 classes, 16KB) and easy to use.
+This simple library allows you to easily create and combine various pixelation effects.
 
-This is the swift port of https://github.com/desandro/close-pixelate.
+Based on a wonderful script by David DeSandro: [close-pixelate.desandro.com](http://close-pixelate.desandro.com).
 
-[**close-pixelate.desandro.com**](http://close-pixelate.desandro.com)
+You may be also be interested in the [Android/Java version of the library](https://github.com/bmaslakov/android-close-pixelate/tree/master/ClosePixelate).
 
 ## Examples
 
